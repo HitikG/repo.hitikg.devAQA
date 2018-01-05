@@ -12,3 +12,6 @@ J:\Documents\Visual Studio 2013\Projects\QuizApp\QuizApp\obj\Debug\QuizApp.pdb
 j:\documents\visual studio 2013\Projects\QuizApp\QuizApp\obj\Debug\QuizApp.csprojResolveAssemblyReference.cache
 j:\documents\visual studio 2013\Projects\QuizApp\QuizApp\obj\Debug\QuizApp.Offline.resources
 j:\documents\visual studio 2013\Projects\QuizApp\QuizApp\obj\Debug\QuizApp.Form1.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.exe.config
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.exe
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.pdb

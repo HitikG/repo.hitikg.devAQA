@@ -90,6 +90,9 @@
     <EmbeddedResource Include="EstablishConnection.resx">
       <DependentUpon>EstablishConnection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GetResults.resx">
+      <DependentUpon>GetResults.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Offline.resx">
       <DependentUpon>Offline.cs</DependentUpon>
     </EmbeddedResource>
