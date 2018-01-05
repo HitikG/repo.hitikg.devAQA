@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Configuration;
 using System.Text;
 
-namespace MultiServer
+namespace Server
 {
     class Program
     {
@@ -35,9 +35,9 @@ namespace MultiServer
             serverSocket.Bind(new IPEndPoint(IPAddress.Any, PORT)); //Bind socket to port on IP
             serverSocket.Listen(0); //Start listening for connections
             serverSocket.BeginAccept(AcceptCallback, null); //Accept connections
-            string GetIP = new WebClient().DownloadString("http://icanhazip.com");
-            Console.WriteLine("The Server IP is: " + GetIP);
-            Console.WriteLine("Server setup complete");
+            string GetIP = new WebClient().DownloadString("http://icanhazip.com"); //Call API to retrieve external IP
+            Console.WriteLine("The Server IP is: " + GetIP); //Write to console 
+            Console.WriteLine("Server setup complete"); //Write to console
             GameID = Ran.Next(0, 999); //Generate random GameID
         }
 
