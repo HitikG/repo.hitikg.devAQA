@@ -1,0 +1,6 @@
+J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\bin\Debug\QuizServer.exe.config
+J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\bin\Debug\QuizServer.exe
+J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\bin\Debug\QuizServer.pdb
+J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\obj\Debug\QuizServer.exe
+J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\obj\Debug\QuizServer.pdb
+J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\obj\Debug\QuizServer.csprojResolveAssemblyReference.cache
