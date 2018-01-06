@@ -15,3 +15,17 @@ j:\documents\visual studio 2013\Projects\QuizApp\QuizApp\obj\Debug\QuizApp.Form1
 C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.exe.config
 C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.exe
 C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.pdb
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.exe.config
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.exe
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.pdb
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.exe
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.pdb
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.csprojResolveAssemblyReference.cache
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.AddQ.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.EstablishConnection.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.GetResults.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.Offline.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.QuestionInterface.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.UserArea.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.Properties.Resources.resources
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.csproj.GenerateResource.Cache

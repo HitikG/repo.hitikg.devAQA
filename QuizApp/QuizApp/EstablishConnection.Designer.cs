@@ -32,7 +32,7 @@
             this.LblConnect = new System.Windows.Forms.Label();
             this.LblStatus = new System.Windows.Forms.Label();
             this.Worker = new System.ComponentModel.BackgroundWorker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblOn = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
@@ -62,21 +62,20 @@
             this.LblStatus.Size = new System.Drawing.Size(0, 13);
             this.LblStatus.TabIndex = 4;
             // 
-            // label1
+            // LblOn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(991, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "2 users online";
+            this.LblOn.AutoSize = true;
+            this.LblOn.Location = new System.Drawing.Point(991, 47);
+            this.LblOn.Name = "LblOn";
+            this.LblOn.Size = new System.Drawing.Size(0, 13);
+            this.LblOn.TabIndex = 5;
             // 
             // EstablishConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1075, 478);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblOn);
             this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.LblConnect);
             this.Controls.Add(this.BtnConnect);
@@ -93,7 +92,7 @@
         private System.Windows.Forms.Label LblConnect;
         private System.Windows.Forms.Label LblStatus;
         public System.ComponentModel.BackgroundWorker Worker;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblOn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -13,6 +13,7 @@ namespace Server
     {
         private static readonly Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Initialise socket
         private static readonly List<Socket> clientSockets = new List<Socket>(); //Create list of users
+        private static  List<string> UserOn = new List<string>(); //Create list of users
         private const int BUFFER_SIZE = 2048; //Initialise buffer
         private const int PORT = 100; //Initialise port
         private static readonly byte[] buffer = new byte[BUFFER_SIZE]; //Create bytearray
@@ -79,6 +80,7 @@ namespace Server
             catch
             {
                 Console.WriteLine("Client forcefully disconnected"); // Don't shutdown because the socket may be disposed and its disconnected anyway.
+                UserOn.Clear();
                 Current.Close(); //Close client
                 clientSockets.Remove(Current); //Remove from arraylist
                 return;
@@ -106,11 +108,14 @@ namespace Server
                 }
                 if (UserCount == 2)
                 {
-                    byte[] data = Encoding.ASCII.GetBytes(GameID.ToString()); //Convert GameID to bytearray
+                    string test1 = "1," + GameID.ToString();
+                    string test2 = "2," + GameID.ToString();
+                    byte[] P1 = Encoding.ASCII.GetBytes(test1); //Convert GameID to bytearray
+                    byte[] P2 = Encoding.ASCII.GetBytes(test2); //Convert GameID to bytearray
                     Socket Client1 = (Socket)clientSockets[0]; //Get first player Socket
                     Socket Client2 = (Socket)clientSockets[1]; //Get second player Socket
-                    Client1.Send(data); //Send player GameID
-                    Client2.Send(data); //Send player GameID
+                    Client1.Send(P1); //Send player GameID
+                    Client2.Send(P2); //Send player GameID
                     Console.WriteLine("Game started"); //Log
                     UserCount = 0; //Reset usercount
                     GameID = Ran.Next(0, 999); //Generate new GameID
@@ -178,6 +183,7 @@ namespace Server
                 while (Reader.Read()) //While it iterates
                 {
                     Users++; //Increment if there is a user
+                    UserOn.Add(Username);
                 }
                 LoginConnect.Close(); //Close the connection 
 
@@ -204,7 +210,7 @@ namespace Server
                 string C = ""; //Split into induvidual variables
                 string D = ""; //Split into induvidual variables
 
-                string UserQuery = "SELECT * FROM Questions WHERE Question=@Question"; //SQL statement to select from Questions table
+                string UserQuery = "SELECT * FROM Questions WHERE QuestionNumber=@Question"; //SQL statement to select from Questions table
                 SqlConnection UserConnect = new SqlConnection(ConfigurationManager.ConnectionStrings["CSData"].ConnectionString); //Define connection string
                 SqlCommand UserCmd = new SqlCommand(UserQuery, UserConnect); //Create command to execute
                 UserCmd.Parameters.AddWithValue("@Question", QNum); //Define parameters
@@ -234,19 +240,108 @@ namespace Server
                 string Score = user[2]; //Split into induvidual variables
                 string GameID = user[3]; //Split into induvidual variables
                 string Date = user[4]; //Split into induvidual variables
+                string PlayerID = user[5]; //Split into induvidual variables
 
 
-                string UserQuery = "INSERT INTO Results (Username, Score, GameID, Date) Values (@Username, @Score, @GameID, @Date)"; //SQL statement to insert into Results 
+                string UserQuery = "INSERT INTO Results (Username, Score, GameID, Date, PlayerID) Values (@Username, @Score, @GameID, @Date, @PlayerID)"; //SQL statement to insert into Results 
                 SqlConnection UserConnect = new SqlConnection(ConfigurationManager.ConnectionStrings["CSData"].ConnectionString); //Define connection string
                 SqlCommand UserCmd = new SqlCommand(UserQuery, UserConnect); //Create command to execute
                 UserCmd.Parameters.AddWithValue("@Username", Username); //Define parameters
                 UserCmd.Parameters.AddWithValue("@Score", Score); //Define parameters
                 UserCmd.Parameters.AddWithValue("@GameID", GameID); //Define parameters
                 UserCmd.Parameters.AddWithValue("@Date", Date); //Define parameters
+                UserCmd.Parameters.AddWithValue("@PlayerID", PlayerID); //Define parameters
 
                 UserConnect.Open(); //Opens the connection
                 UserCmd.ExecuteNonQuery(); //Execute the query
                 UserConnect.Close(); //Close the connection
+            }
+            else if (text.StartsWith("f")) //Check if user is submitting a score
+            {
+                string[] user = text.Split(','); //Define array with text split at every comma                
+                string GameID = user[1]; //Split into induvidual variables               
+                string PlayerID = user[2]; //Split into induvidual variables
+
+                string Score = "";
+                string UserQuery = "SELECT * FROM Results WHERE GameID=@GameID AND PlayerID = @PlayerID"; //SQL statement to select from Questions table
+                SqlConnection UserConnect = new SqlConnection(ConfigurationManager.ConnectionStrings["CSData"].ConnectionString); //Define connection string
+                SqlCommand UserCmd = new SqlCommand(UserQuery, UserConnect); //Create command to execute
+                UserCmd.Parameters.AddWithValue("@GameID", GameID); //Define parameters
+                UserCmd.Parameters.AddWithValue("@PlayerID", PlayerID); //Define parameters
+
+                UserConnect.Open(); //Opens the connection
+                SqlDataReader dr = UserCmd.ExecuteReader(); //Define reader to read from database
+                while (dr.Read()) //While it iterates
+                {
+                    Score = dr["Score"].ToString(); //Set variable as result from table 
+
+                }
+                UserConnect.Close(); //Close the connection
+
+                string LS = Score; //Concatenate to send over the server
+                byte[] data = Encoding.ASCII.GetBytes(LS); //Convert the message to bytearray
+                Current.Send(data); //Send the data to the socket
+                clientSockets.Remove(Current); //Remove the socket to prevent duplicate queries
+            }
+
+            else if(text.StartsWith("e"))
+            {
+                string[] user = text.Split(','); //Define array with text split at every comma        
+                bool test = false;
+                string Username = user[1]; //Split into induvidual variables
+                string LoginQuery = "SELECT * FROM Users WHERE Username=@Username"; //Our Query String
+                SqlConnection LoginConnect = new SqlConnection(ConfigurationManager.ConnectionStrings["CSData"].ConnectionString); //Declaring Our Connection
+                SqlCommand LoginCmd = new SqlCommand(LoginQuery, LoginConnect); //Declaring Our Command
+                LoginCmd.Parameters.AddWithValue("@Username", Username); //Stores Our Data
+                int UserCount = 0; //Declaring Our Int
+                LoginConnect.Open(); //Opens Our Connection
+                SqlDataReader CheckReader = LoginCmd.ExecuteReader(); //Opens Our Reader
+
+                while (CheckReader.Read()) //While It Reads
+                {
+                    UserCount++; //Checks
+                }
+                LoginConnect.Close(); //Close Our Connection
+
+                if (UserCount > 0) // If There Is 1 User
+                {
+                    test =  true; //Return True
+                }
+                else
+                {
+                    test = false; //Return False
+                }
+                string LS = test.ToString(); //Concatenate to send over the server
+                byte[] data = Encoding.ASCII.GetBytes(LS); //Convert the message to bytearray
+                Current.Send(data); //Send the data to the socket
+                clientSockets.Remove(Current); //Remove the socket to prevent duplicate queries
+            }
+            else if (text.StartsWith("d"))
+            {
+                string[] user = text.Split(','); //Define array with text split at every comma        
+                bool test = false;
+                string Username = user[1]; //Split into induvidual variables
+
+
+                if (UserOn.Contains(Username)) // If There Is 1 User
+                {
+                    test = true; //Return True
+                }
+                else
+                {
+                    test = false; //Return False
+                }
+                string LS = test.ToString(); //Concatenate to send over the server
+                byte[] data = Encoding.ASCII.GetBytes(LS); //Convert the message to bytearray
+                Current.Send(data); //Send the data to the socket
+                clientSockets.Remove(Current); //Remove the socket to prevent duplicate queries
+            }
+            else if (text.StartsWith("h"))
+            {
+                string LS = UserOn.Count.ToString(); //Concatenate to send over the server
+                byte[] data = Encoding.ASCII.GetBytes(LS); //Convert the message to bytearray
+                Current.Send(data); //Send the data to the socket
+                //clientSockets.Remove(Current); //Remove the socket to prevent duplicate queries
             }
             else
             {
@@ -258,10 +353,12 @@ namespace Server
                 catch
                 {
                     Console.WriteLine("Client forcefully disconnected");
+                    UserOn.Clear();
                 }
-                
+
             }
-            Current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, Current);
+            try { Current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, Current); }
+            catch { }
         }
     }
 }

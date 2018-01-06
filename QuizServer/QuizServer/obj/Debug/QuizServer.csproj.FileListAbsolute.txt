@@ -7,3 +7,6 @@ J:\Documents\Visual Studio 2013\Projects\QuizServer\QuizServer\obj\Debug\QuizSer
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.exe.config
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.exe
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.pdb
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.exe
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.pdb
+J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.csprojResolveAssemblyReference.cache

@@ -31,13 +31,13 @@ namespace QuizApp
         {
             if (RbRegister.Checked == true)
             {
-                /*if (W.CheckUser(TbUser.Text)) //Validates If The User Already Exists
+                if (W.CheckUser(TbUser.Text)) //Validates If The User Already Exists
                 {
                     LblMessage.Text = "This Username Already Exists"; //Displays A Message
                     Clear();
-                }*/
-                
-                 if (TbUser.Text == "" || TbPass.Text == "")
+                }
+
+                else if (TbUser.Text == "" || TbPass.Text == "")
                 {
                     LblMessage.Text = "You need to complete all fields";
                     Clear();
@@ -56,7 +56,12 @@ namespace QuizApp
             }
             else if (RbLogin.Checked == true)
             {
-                if (TbUser.Text == "" || TbPass.Text == "")
+                if (W.LoggedIn(TbUser.Text))
+                {
+                    LblMessage.Text = "This Username Is Already Logged In"; //Displays A Message
+                    Clear();
+                }
+                else if (TbUser.Text == "" || TbPass.Text == "")
                 {
                     LblMessage.Text = "You need to enter both your credentials";
                     Clear();
@@ -91,16 +96,18 @@ namespace QuizApp
             TbPass.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnOnline_Click(object sender, EventArgs e)
         {
             EstablishConnection E = new EstablishConnection(TbUser.Text);
             E.Show();
+            Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnOffline_Click(object sender, EventArgs e)
         {
-            AddQ A = new AddQ();
-            A.Show();
+            Offline Off = new Offline(TbUser.Text);
+            Off.Show();
+            Visible = false;
         }
 
         private void BtnSubmit_Click(object sender, EventArgs e)
@@ -109,9 +116,5 @@ namespace QuizApp
             panel1.Visible = false;
             PnlUnlogged.Visible = true;
         }
-
-
-
-
     }
 }

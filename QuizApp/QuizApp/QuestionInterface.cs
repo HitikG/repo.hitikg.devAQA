@@ -18,61 +18,82 @@ namespace QuizApp
     {
         WorkHorse W = new WorkHorse();
         public int QNum = 1;
-        public int Cor = 6;
+        public int Cor = 0;
 
         public string Username = "";
-        public int GameID = 0;
+        public string GID = "";
+        public int PID = 0;
+        bool GameDone = false;
         string Date = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
 
         private static readonly Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private const int Port = 100;
 
-        public QuestionInterface(string User, int Game)
+        public QuestionInterface(string User, string Game)
         {
             InitializeComponent();
             Username = User;
+            LblScore.Text = "Score: " + Cor;
+            PID = Game.FirstOrDefault(); //Split into induvidual variables
+            GID = Game.Substring(1); //Split into induvidual variables
             string test = Game.ToString();
-            GameID = Game;
-            if (test.Length > 3)
+
+            if (test.Length > 4)
             {
                 test = test.Substring(0, test.Length / 2);
-                GameID = Convert.ToInt32(test);
+                GID = test;
             }
+
             Incrementer();
             Timer.Enabled = true; // Enable the timer.
             Timer.Start();//Strart it
             Timer.Interval = 500; // The time per tick.
-            progressBar1.Maximum = 10;
-
         }
 
         public async Task Incrementer()
         {
-            while (QNum != 11)
+            while (QNum != 12)
             {
-                Rb1.Checked = false;
                 GetQuestion();
-                await Task.Delay(500);
-                progressBar1.Value = 0;
                 if (Rb1.Checked == true)
                 {
                     if (Cor != 10)
-                    { Cor++; }
+                    {
+                        Cor++;
+                        LblScore.Text = "Score: " + Cor;
+                        Rb1.Checked = false;
+                    }
                 }
+                await Task.Delay(3000);
             }
         }
 
         public void GetQuestion()
         {
-            if (QNum == 10)
+            if (QNum == 11)
             {
-                LblQuestion.Text = "Done" + Cor;
+                GameDone = true;
                 Timer.Stop();
-                W.SendResults(Username, Cor, GameID, Date);
+                if (GID.Length > 3)
+                {
+                    GID = GID.Substring(1);
+                }
+                if (PID == 49)
+                {
+                    PID = 1;
+                }
+                else if (PID == 50)
+                {
+                    PID = 2;
+                }
+                if (GameDone)
+                {
+                    W.SendResults(Username, Cor, GID, Date, PID);
+                    GetResults G = new GetResults(1, Cor, GID, PID);
+                    G.Show();
+                    Visible = false;
+                }
             }
-
-            Rb1.Checked = false;
-
 
             string Question = W.GetQ(QNum);
             string[] Qs = Question.Split(',');
@@ -92,24 +113,12 @@ namespace QuizApp
             {
                 RadioButtons[i].Location = Location[i];
             }
+
             LblQuestion.Text = Q;
             Rb1.Text = A;
             Rb2.Text = B;
             Rb3.Text = C;
             Rb4.Text = D;
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (progressBar1.Value != 10)
-            {
-                progressBar1.Value++;
-            }
-            else
-            {
-                Timer.Stop();
-            }
         }
     }
 }

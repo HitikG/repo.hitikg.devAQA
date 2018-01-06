@@ -35,10 +35,9 @@
             this.Rb3 = new System.Windows.Forms.RadioButton();
             this.Rb4 = new System.Windows.Forms.RadioButton();
             this.BtnSubmit = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.LblQuestion = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LblQNum
@@ -52,9 +51,8 @@
             // 
             // Rb1
             // 
-            this.Rb1.AutoCheck = false;
             this.Rb1.AutoSize = true;
-            this.Rb1.Location = new System.Drawing.Point(569, 284);
+            this.Rb1.Location = new System.Drawing.Point(570, 285);
             this.Rb1.Name = "Rb1";
             this.Rb1.Size = new System.Drawing.Size(14, 13);
             this.Rb1.TabIndex = 2;
@@ -62,9 +60,8 @@
             // 
             // Rb2
             // 
-            this.Rb2.AutoCheck = false;
             this.Rb2.AutoSize = true;
-            this.Rb2.Location = new System.Drawing.Point(569, 325);
+            this.Rb2.Location = new System.Drawing.Point(570, 325);
             this.Rb2.Name = "Rb2";
             this.Rb2.Size = new System.Drawing.Size(14, 13);
             this.Rb2.TabIndex = 3;
@@ -72,9 +69,8 @@
             // 
             // Rb3
             // 
-            this.Rb3.AutoCheck = false;
             this.Rb3.AutoSize = true;
-            this.Rb3.Location = new System.Drawing.Point(569, 363);
+            this.Rb3.Location = new System.Drawing.Point(570, 365);
             this.Rb3.Name = "Rb3";
             this.Rb3.Size = new System.Drawing.Size(14, 13);
             this.Rb3.TabIndex = 4;
@@ -82,9 +78,8 @@
             // 
             // Rb4
             // 
-            this.Rb4.AutoCheck = false;
             this.Rb4.AutoSize = true;
-            this.Rb4.Location = new System.Drawing.Point(569, 402);
+            this.Rb4.Location = new System.Drawing.Point(570, 405);
             this.Rb4.Name = "Rb4";
             this.Rb4.Size = new System.Drawing.Size(14, 13);
             this.Rb4.TabIndex = 6;
@@ -92,21 +87,13 @@
             // 
             // BtnSubmit
             // 
-            this.BtnSubmit.Location = new System.Drawing.Point(569, 513);
+            this.BtnSubmit.Location = new System.Drawing.Point(570, 515);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(75, 23);
             this.BtnSubmit.TabIndex = 0;
             this.BtnSubmit.Text = "Submit";
             this.BtnSubmit.UseVisualStyleBackColor = true;
             this.BtnSubmit.Visible = false;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(563, 599);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 1;
             // 
             // LblQuestion
             // 
@@ -117,27 +104,22 @@
             this.LblQuestion.TabIndex = 8;
             this.LblQuestion.Text = "label1";
             // 
-            // Timer
+            // LblScore
             // 
-            this.Timer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Score: 3";
+            this.LblScore.AutoSize = true;
+            this.LblScore.Location = new System.Drawing.Point(12, 9);
+            this.LblScore.Name = "LblScore";
+            this.LblScore.Size = new System.Drawing.Size(38, 13);
+            this.LblScore.TabIndex = 9;
+            this.LblScore.Text = "Score:";
             // 
             // QuestionInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblScore);
             this.Controls.Add(this.LblQuestion);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.Rb4);
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.Rb3);
@@ -159,9 +141,8 @@
         private System.Windows.Forms.RadioButton Rb3;
         private System.Windows.Forms.RadioButton Rb4;
         private System.Windows.Forms.Button BtnSubmit;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label LblQuestion;
         private System.Windows.Forms.Timer Timer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblScore;
     }
 }

@@ -37,15 +37,16 @@
             this.Rb2 = new System.Windows.Forms.RadioButton();
             this.Rb1 = new System.Windows.Forms.RadioButton();
             this.LblQNum = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblQ = new System.Windows.Forms.Label();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rBtn1 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.rBtn2 = new System.Windows.Forms.RadioButton();
+            this.rBtn4 = new System.Windows.Forms.RadioButton();
+            this.rBtn3 = new System.Windows.Forms.RadioButton();
+            this.LblQn = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.LblScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LblQuestion
@@ -124,14 +125,14 @@
             this.LblQNum.TabIndex = 10;
             this.LblQNum.Text = "Question";
             // 
-            // label1
+            // LblQ
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(457, 185);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "label1";
+            this.LblQ.AutoSize = true;
+            this.LblQ.Location = new System.Drawing.Point(563, 88);
+            this.LblQ.Name = "LblQ";
+            this.LblQ.Size = new System.Drawing.Size(35, 13);
+            this.LblQ.TabIndex = 24;
+            this.LblQ.Text = "label1";
             // 
             // progressBar2
             // 
@@ -141,19 +142,18 @@
             this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar2.TabIndex = 19;
             // 
-            // radioButton1
+            // rBtn1
             // 
-            this.radioButton1.AutoCheck = false;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(463, 499);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(14, 13);
-            this.radioButton1.TabIndex = 23;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rBtn1.AutoSize = true;
+            this.rBtn1.Location = new System.Drawing.Point(570, 285);
+            this.rBtn1.Name = "rBtn1";
+            this.rBtn1.Size = new System.Drawing.Size(14, 13);
+            this.rBtn1.TabIndex = 23;
+            this.rBtn1.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(463, 610);
+            this.button1.Location = new System.Drawing.Point(570, 515);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 17;
@@ -161,58 +161,65 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             // 
-            // radioButton2
+            // rBtn2
             // 
-            this.radioButton2.AutoCheck = false;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(463, 460);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(14, 13);
-            this.radioButton2.TabIndex = 22;
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rBtn2.AutoSize = true;
+            this.rBtn2.Location = new System.Drawing.Point(570, 325);
+            this.rBtn2.Name = "rBtn2";
+            this.rBtn2.Size = new System.Drawing.Size(14, 13);
+            this.rBtn2.TabIndex = 22;
+            this.rBtn2.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rBtn4
             // 
-            this.radioButton3.AutoCheck = false;
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(463, 422);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(14, 13);
-            this.radioButton3.TabIndex = 21;
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rBtn4.AutoSize = true;
+            this.rBtn4.Location = new System.Drawing.Point(570, 405);
+            this.rBtn4.Name = "rBtn4";
+            this.rBtn4.Size = new System.Drawing.Size(14, 13);
+            this.rBtn4.TabIndex = 21;
+            this.rBtn4.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rBtn3
             // 
-            this.radioButton4.AutoCheck = false;
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(463, 381);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(14, 13);
-            this.radioButton4.TabIndex = 20;
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rBtn3.AutoSize = true;
+            this.rBtn3.Location = new System.Drawing.Point(570, 365);
+            this.rBtn3.Name = "rBtn3";
+            this.rBtn3.Size = new System.Drawing.Size(14, 13);
+            this.rBtn3.TabIndex = 20;
+            this.rBtn3.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // LblQn
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1088, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Question";
+            this.LblQn.AutoSize = true;
+            this.LblQn.Location = new System.Drawing.Point(1194, 9);
+            this.LblQn.Name = "LblQn";
+            this.LblQn.Size = new System.Drawing.Size(49, 13);
+            this.LblQn.TabIndex = 18;
+            this.LblQn.Text = "Question";
+            // 
+            // LblScore
+            // 
+            this.LblScore.AutoSize = true;
+            this.LblScore.Location = new System.Drawing.Point(12, 9);
+            this.LblScore.Name = "LblScore";
+            this.LblScore.Size = new System.Drawing.Size(38, 13);
+            this.LblScore.TabIndex = 25;
+            this.LblScore.Text = "Score:";
             // 
             // Offline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblScore);
+            this.Controls.Add(this.LblQ);
             this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rBtn1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.rBtn2);
+            this.Controls.Add(this.rBtn4);
+            this.Controls.Add(this.rBtn3);
+            this.Controls.Add(this.LblQn);
             this.Controls.Add(this.LblQuestion);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.Rb4);
@@ -238,14 +245,15 @@
         private System.Windows.Forms.RadioButton Rb2;
         private System.Windows.Forms.RadioButton Rb1;
         private System.Windows.Forms.Label LblQNum;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblQ;
         private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rBtn1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rBtn2;
+        private System.Windows.Forms.RadioButton rBtn4;
+        private System.Windows.Forms.RadioButton rBtn3;
+        private System.Windows.Forms.Label LblQn;
         private System.Windows.Forms.Timer Timer;
+        private System.Windows.Forms.Label LblScore;
     }
 }

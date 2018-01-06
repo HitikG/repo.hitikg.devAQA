@@ -19,111 +19,86 @@ namespace QuizApp
         WorkHorse W = new WorkHorse();
         public int QNum = 1;
         public int Cor = 0;
+
         public string Username = "";
-        public int GameID = 0;
+        bool GameDone = false;
+        string Date = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
         private static readonly Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private const int Port = 100;
 
-        public Offline(string User, int Game)
+        public Offline(string User)
         {
             InitializeComponent();
             Username = User;
-            GameID = Game;
+            LblScore.Text = "Score: " + Cor;
 
             Incrementer();
-            if (QNum == 10)
-            {
-                string TimeStamp = DateTime.Now.ToString("HH:mm:ss");
-                W.SendResults(Username, Cor, GameID, TimeStamp);
-            }
-
-
             Timer.Enabled = true; // Enable the timer.
             Timer.Start();//Strart it
-            Timer.Interval = 50000; // The time per tick.
+            Timer.Interval = 500; // The time per tick.
             progressBar1.Maximum = 10;
-
         }
 
         public async Task Incrementer()
         {
-            while (true)
+            while (QNum != 12)
             {
-                if (QNum == 10)
+                GetQuestion();
+                progressBar1.Value = 0;
+                if (rBtn1.Checked == true)
                 {
-                    string TimeStamp = DateTime.Now.ToString("HH:mm:ss");
-                    W.SendResults(Username, Cor, GameID, TimeStamp);
-                }
-                else
-                {
-                    Rb1.Checked = false;
-                    GetQuestion();
-                    await Task.Delay(500);
-                    progressBar1.Value = 0;
-                    if (Rb1.Checked == true)
+                    if (Cor != 10)
                     {
-                        if (Cor != 10)
-                        {
-                            Cor++;
-                        }
-
+                        Cor++;
+                        LblScore.Text = "Score: " + Cor;
+                        rBtn1.Checked = false;
                     }
                 }
+                await Task.Delay(3000);
             }
-
         }
 
         public void GetQuestion()
         {
-            Rb1.Checked = false;
-            if (QNum > 10)
+            if (QNum == 11)
             {
-                LblQuestion.Text = "Done" + Cor;
+                GameDone = true;
                 Timer.Stop();
-                //W.SendResults(Username, Cor, );
-            }
-            else
-            {
-                //WorkHorse W = new WorkHorse();
-                //string Question = W.GetQ(QNum);
-                //string[] Qs = Question.Split(',');
-                //string Q = Qs[0];
-                //string A = Qs[1];
-                //string B = Qs[2];
-                //string C = Qs[3];
-               // string D = Qs[4];
-                Random Ran = new Random();
-                LblQNum.Text = "Question " + QNum.ToString();
-                QNum++;
 
-                List<Point> ButtonList = new List<Point> { Rb1.Location, Rb2.Location, Rb3.Location, Rb4.Location }; //Defining Our Buttons
-                var RadioButtons = new[] { Rb1, Rb2, Rb3, Rb4 }; //Defining Our Buttons
-                var Location = ButtonList.OrderBy(x => Ran.Next(ButtonList.Count)).ToList(); //Shuffle Where The Buttons Are
-                for (int i = 0; i < RadioButtons.Length; i++) //Change The Number Where The Buttons Are Displayed
+                if (GameDone)
                 {
-                    RadioButtons[i].Location = Location[i];
+                    W.SendResults(Username, Cor, "1111", Date, 1111);
+                    GetResults G = new GetResults(2, Cor, "0", 0);
+                    G.Show();
+                    Visible = false;
                 }
-                /*LblQuestion.Text = Q;
-                Rb1.Text = A;
-                Rb2.Text = B;
-                Rb3.Text = C;
-                Rb4.Text = D;/*/
             }
-        }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (progressBar1.Value != 10)
-            {
-                progressBar1.Value++;
-            }
-            else
-            {
-                Timer.Stop();
+            string Question = W.GetQ(QNum);
+            string[] Qs = Question.Split(',');
+            string Q = Qs[0];
+            string A = Qs[1];
+            string B = Qs[2];
+            string C = Qs[3];
+            string D = Qs[4];
+            Random Ran = new Random();
+            LblQn.Text = "Question " + QNum.ToString();
+            QNum++;
 
+            List<Point> ButtonList = new List<Point> { rBtn1.Location, rBtn2.Location, rBtn3.Location, rBtn4.Location }; //Defining Our Buttons
+            var RadioButtons = new[] { rBtn1, rBtn2, rBtn3, rBtn4 }; //Defining Our Buttons
+            var Location = ButtonList.OrderBy(x => Ran.Next(ButtonList.Count)).ToList(); //Shuffle Where The Buttons Are
+            for (int i = 0; i < RadioButtons.Length; i++) //Change The Number Where The Buttons Are Displayed
+            {
+                RadioButtons[i].Location = Location[i];
             }
+
+            LblQ.Text = Q;
+            rBtn1.Text = A;
+            rBtn2.Text = B;
+            rBtn3.Text = C;
+            rBtn4.Text = D;
         }
     }
 }
-
-

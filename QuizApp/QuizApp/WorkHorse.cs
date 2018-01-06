@@ -37,7 +37,7 @@ namespace QuizApp
                         System.Windows.Forms.MessageBox.Show("Server is down! Exiting..."); //WinForms
                         System.Environment.Exit(1);
                     }
-                    
+
                 }
             }
         }
@@ -74,12 +74,12 @@ namespace QuizApp
             string text = "addq" + "," + S + "," + Q + "," + A + "," + B + "," + C + "," + D;
             byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
             ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
-        }        
+        }
 
         public string GetQ(int Num)
         {
             ConnectTS();
-            string QNum = Convert.ToString(Num);            
+            string QNum = Convert.ToString(Num);
             string text = "getq" + "," + QNum;
             byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
             ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
@@ -88,12 +88,22 @@ namespace QuizApp
             return GlobalTemp;
         }
 
-        public void SendResults(string Username, int Score, int RandomID, string Date)
+        public void SendResults(string Username, int Score, string RandomID, string Date, int PlayerID)
         {
             ConnectTS();
-            string text = "scores" + "," + Username + "," + Score + "," + RandomID + "," + Date;
+            string text = "scores" + "," + Username + "," + Score + "," + RandomID + "," + Date + "," + PlayerID;
             byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
             ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
+        }
+        public string GetResults(string RandomID, int PlayerID)
+        {
+            ConnectTS();
+            string text = "fscores" + "," + RandomID + "," + PlayerID;
+            byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
+            System.Threading.Thread.Sleep(1000);
+            ReceiveResponse();
+            return GlobalTemp;
         }
 
         private void ReceiveResponse()
@@ -108,27 +118,36 @@ namespace QuizApp
 
         public bool CheckUser(string Username) //Checks If The User Exists
         {
-            string LoginQuery = "SELECT * FROM Users WHERE Username=@Username"; //Our Query String
-            SqlConnection LoginConnect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString); //Declaring Our Connection
-            SqlCommand LoginCmd = new SqlCommand(LoginQuery, LoginConnect); //Declaring Our Command
-            LoginCmd.Parameters.AddWithValue("@Username", Username); //Stores Our Data
-            int UserCount = 0; //Declaring Our Int
-            LoginConnect.Open(); //Opens Our Connection
-            SqlDataReader CheckReader = LoginCmd.ExecuteReader(); //Opens Our Reader
-
-            while (CheckReader.Read()) //While It Reads
+            ConnectTS();
+            string text = "existing" + "," + Username;
+            byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
+            System.Threading.Thread.Sleep(1000);
+            ReceiveResponse();
+            if (GlobalTemp == "True")
             {
-                UserCount++; //Checks
-            }
-            LoginConnect.Close(); //Close Our Connection
-
-            if (UserCount > 0) // If There Is 1 User
-            {
-                return true; //Return True
+                return true;
             }
             else
             {
-                return false; //Return False
+                return false;
+            }
+        }
+        public bool LoggedIn(string Username) //Checks If The User Exists
+        {
+            ConnectTS();
+            string text = "duplicate" + "," + Username;
+            byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
+            System.Threading.Thread.Sleep(1000);
+            ReceiveResponse();
+            if (GlobalTemp == "True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         /*public int GetRows()
@@ -141,7 +160,7 @@ namespace QuizApp
             UserConnect.Close();
             return count;
         }*/
-        
+
 
     }
 }

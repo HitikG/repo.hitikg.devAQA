@@ -32,8 +32,8 @@
             this.BtnRegister = new System.Windows.Forms.Button();
             this.TbPass = new System.Windows.Forms.TextBox();
             this.LblMessage = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnOnline = new System.Windows.Forms.Button();
+            this.BtnOffline = new System.Windows.Forms.Button();
             this.RbLogin = new System.Windows.Forms.RadioButton();
             this.RbRegister = new System.Windows.Forms.RadioButton();
             this.PnlUnlogged = new System.Windows.Forms.Panel();
@@ -80,25 +80,25 @@
             this.LblMessage.TabIndex = 78;
             this.LblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // BtnOnline
             // 
-            this.button1.Location = new System.Drawing.Point(570, 108);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Multiplayer Mode";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnOnline.Location = new System.Drawing.Point(570, 108);
+            this.BtnOnline.Name = "BtnOnline";
+            this.BtnOnline.Size = new System.Drawing.Size(100, 23);
+            this.BtnOnline.TabIndex = 5;
+            this.BtnOnline.Text = "Multiplayer Mode";
+            this.BtnOnline.UseVisualStyleBackColor = true;
+            this.BtnOnline.Click += new System.EventHandler(this.BtnOnline_Click);
             // 
-            // button2
+            // BtnOffline
             // 
-            this.button2.Location = new System.Drawing.Point(570, 210);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Single Player Mode";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BtnOffline.Location = new System.Drawing.Point(570, 210);
+            this.BtnOffline.Name = "BtnOffline";
+            this.BtnOffline.Size = new System.Drawing.Size(100, 23);
+            this.BtnOffline.TabIndex = 6;
+            this.BtnOffline.Text = "Single Player Mode";
+            this.BtnOffline.UseVisualStyleBackColor = true;
+            this.BtnOffline.Click += new System.EventHandler(this.BtnOffline_Click);
             // 
             // RbLogin
             // 
@@ -132,14 +132,14 @@
             this.PnlUnlogged.Controls.Add(this.TbPass);
             this.PnlUnlogged.Location = new System.Drawing.Point(12, 159);
             this.PnlUnlogged.Name = "PnlUnlogged";
-            this.PnlUnlogged.Size = new System.Drawing.Size(1240, 310);
+            this.PnlUnlogged.Size = new System.Drawing.Size(1240, 272);
             this.PnlUnlogged.TabIndex = 79;
             this.PnlUnlogged.Visible = false;
             // 
             // PnlLogged
             // 
-            this.PnlLogged.Controls.Add(this.button1);
-            this.PnlLogged.Controls.Add(this.button2);
+            this.PnlLogged.Controls.Add(this.BtnOnline);
+            this.PnlLogged.Controls.Add(this.BtnOffline);
             this.PnlLogged.Location = new System.Drawing.Point(12, 156);
             this.PnlLogged.Name = "PnlLogged";
             this.PnlLogged.Size = new System.Drawing.Size(1240, 509);
@@ -171,6 +171,7 @@
             this.TbIP.Name = "TbIP";
             this.TbIP.Size = new System.Drawing.Size(100, 20);
             this.TbIP.TabIndex = 4;
+            this.TbIP.Text = "86.137.50.242";
             // 
             // LblDisplay
             // 
@@ -207,8 +208,8 @@
         private System.Windows.Forms.Button BtnRegister;
         private System.Windows.Forms.TextBox TbPass;
         private System.Windows.Forms.Label LblMessage;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnOnline;
+        private System.Windows.Forms.Button BtnOffline;
         private System.Windows.Forms.RadioButton RbLogin;
         private System.Windows.Forms.RadioButton RbRegister;
         private System.Windows.Forms.Panel PnlUnlogged;

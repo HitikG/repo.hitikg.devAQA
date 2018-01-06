@@ -19,17 +19,20 @@ namespace QuizApp
         private static readonly Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private const int Port = 100;
         public string Username = "";
+        WorkHorse W = new WorkHorse();
+        public string GlobalTemp = "";
 
         public EstablishConnection(string Passthrough)
         {
             InitializeComponent();
             Username = Passthrough;
-
+            ConnectToServer(); //Call connection
+            GetUsers();
+            LblOn.Text = GlobalTemp + " user(s) online";
         }
-
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            ConnectToServer(); //Call connection
+
             SendRequest(); //Tell server we're online
             ReceiveResponse(); //Get server messages
             Worker.DoWork += new DoWorkEventHandler(Worker_DoWork); //Create event handler
@@ -48,7 +51,7 @@ namespace QuizApp
                 try
                 {
                     ConAttempts++; //Increment attempts                   
-                    ClientSocket.Connect(IPAddress.Loopback, Port); //Try to connect
+                    ClientSocket.Connect(W.IP, Port); //Try to connect
                 }
                 catch (SocketException)
                 {
@@ -61,6 +64,26 @@ namespace QuizApp
         {
             string request = "ready"; //Tell server we're waiting
             SendString(request); //Call function to convert string
+        }
+        public string GetUsers()
+        {
+            string text = "howmany";
+            byte[] buffer = Encoding.ASCII.GetBytes(text); //Convert string to bytearray
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None); //Send to server
+            System.Threading.Thread.Sleep(1000);
+            GetCountRes();
+            return GlobalTemp;
+            
+        }
+
+        private void GetCountRes()
+        {
+            var buffer = new byte[2048]; //Create buffer
+            int received = ClientSocket.Receive(buffer, SocketFlags.None); //Get messages
+            if (received == 0) return;
+            var data = new byte[received]; //Convert data
+            Array.Copy(buffer, data, received); //Store data
+            GlobalTemp = Encoding.ASCII.GetString(data); //Convert to string
         }
 
         private static void SendString(string text)
@@ -83,21 +106,22 @@ namespace QuizApp
             if (LblStatus.Text.Any(char.IsDigit)) //If there's a number
             {
                 string VerifyNum = new String(text.ToCharArray().Where(c => Char.IsDigit(c)).ToArray()); //Get number in string
-                int GameID = Convert.ToInt32(VerifyNum);
+                string GameID = VerifyNum;
                 LblConnect.Invoke((Action)delegate //Have to do this to avoid crashing UI
                 {
                     LblConnect.Text = VerifyNum; //Set label with GameID
-
                     QuestionInterface Q = new QuestionInterface(Username, GameID); //Call new form
                     Q.Show(); //Show it
+                    Visible = false;
                 });
 
             }
         }
         void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            
             while (LblConnect.Text == "") //While there's no GameID
-            {
+            {                
                 ReceiveResponse(); //Wait for server
                 if (LblConnect.Text != "")
                 {
