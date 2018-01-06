@@ -27,7 +27,7 @@ namespace QuizApp
             InitializeComponent();
             Username = Passthrough;
             ConnectToServer(); //Call connection
-            GetUsers();
+            //GetUsers();
             LblOn.Text = GlobalTemp + " user(s) online";
         }
         private void BtnConnect_Click(object sender, EventArgs e)
