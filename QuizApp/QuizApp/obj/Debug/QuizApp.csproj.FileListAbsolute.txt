@@ -29,3 +29,14 @@ J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.Questio
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.UserArea.resources
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.Properties.Resources.resources
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.csproj.GenerateResource.Cache
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.exe
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\bin\Debug\QuizApp.pdb
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.csprojResolveAssemblyReference.cache
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.AddQ.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.EstablishConnection.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.GetResults.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.Offline.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.QuestionInterface.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.UserArea.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.Properties.Resources.resources
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizApp\QuizApp\obj\Debug\QuizApp.csproj.GenerateResource.Cache
