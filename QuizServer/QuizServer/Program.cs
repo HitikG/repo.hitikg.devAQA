@@ -197,8 +197,8 @@ namespace Server
                     byte[] data = Encoding.ASCII.GetBytes("False"); //Convert true message to bytearray
                     Current.Send(data); //Send results of check
                 }
-                clientSockets.Remove(Current); //Remove the socket to prevent duplicate queries
-                //clientSockets.Clear(); //Remove the socket to prevent duplicate queries
+                //clientSockets.Remove(Current); //Remove the socket to prevent duplicate queries
+                //gitclientSockets.Clear(); //Remove the socket to prevent duplicate queries
             }
             else if (text.StartsWith("g")) //Check if user wants questions
             {

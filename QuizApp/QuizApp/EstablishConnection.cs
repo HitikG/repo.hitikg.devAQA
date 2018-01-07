@@ -26,13 +26,13 @@ namespace QuizApp
         {
             InitializeComponent();
             Username = Passthrough;
-            
-            //GetUsers();
+            ConnectToServer(); //Call connection
+            GetUsers();
             LblOn.Text = GlobalTemp + " user(s) online";
         }
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            ConnectToServer(); //Call connection
+            
             SendRequest(); //Tell server we're online
             ReceiveResponse(); //Get server messages
             Worker.DoWork += new DoWorkEventHandler(Worker_DoWork); //Create event handler
