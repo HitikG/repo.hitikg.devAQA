@@ -18,7 +18,7 @@ namespace QuizApp
         {
             InitializeComponent();
             int Swap = 0;
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             WorkHorse W = new WorkHorse();
             Random Ran = new Random();
 
