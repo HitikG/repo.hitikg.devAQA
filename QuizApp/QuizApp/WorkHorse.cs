@@ -150,6 +150,10 @@ namespace QuizApp
                 return false;
             }
         }
+        public string GetIP()
+        {
+            return IP;
+        }
         /*public int GetRows()
         {
             string UserQuery = "SELECT COUNT(*) FROM Questions";

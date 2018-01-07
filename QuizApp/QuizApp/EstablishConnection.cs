@@ -46,12 +46,13 @@ namespace QuizApp
         public void ConnectToServer()
         {
             int ConAttempts = 0; //Initialise counter
+            string test = W.GetIP();
             while (!ClientSocket.Connected) //While we're not connected
             {
                 try
                 {
                     ConAttempts++; //Increment attempts                   
-                    ClientSocket.Connect(W.IP, Port); //Try to connect
+                    ClientSocket.Connect("86.137.50.242", Port); //Try to connect
                 }
                 catch (SocketException)
                 {
