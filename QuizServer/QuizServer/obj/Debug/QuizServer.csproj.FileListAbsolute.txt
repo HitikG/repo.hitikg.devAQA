@@ -10,3 +10,9 @@ J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServe
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.exe
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.pdb
 J:\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.csprojResolveAssemblyReference.cache
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.exe.config
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.exe
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.pdb
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.exe
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\bin\Debug\QuizServer.pdb
+C:\Users\Dev\Documents\GitHub\repo.hitikg.devAQA\QuizServer\QuizServer\obj\Debug\QuizServer.csprojResolveAssemblyReference.cache

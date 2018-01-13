@@ -52,7 +52,7 @@ namespace QuizApp
                 try
                 {
                     ConAttempts++; //Increment attempts                   
-                    ClientSocket.Connect("86.137.50.242", Port); //Try to connect
+                    ClientSocket.Connect(IPAddress.Loopback, Port); //Try to connect
                 }
                 catch (SocketException)
                 {
